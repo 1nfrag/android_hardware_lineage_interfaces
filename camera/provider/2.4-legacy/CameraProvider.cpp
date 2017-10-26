@@ -233,7 +233,7 @@ bool CameraProvider::initialize() {
         mCameraDeviceNames.add(
                 std::make_pair(cameraIdStr,
                                getHidlDeviceName(cameraIdStr, deviceVersion)));
-        if (deviceVersion >= CAMERA_DEVICE_API_VERSION_3_2 &&
+/*        if (deviceVersion >= CAMERA_DEVICE_API_VERSION_3_2 &&
                 mModule->isOpenLegacyDefined()) {
             // try open_legacy to see if it actually works
             struct hw_device_t* halDev = nullptr;
@@ -251,6 +251,9 @@ bool CameraProvider::initialize() {
                 ALOGW("%s: open_legacy try failed!", __FUNCTION__);
             }
         }
+*/
+    mOpenLegacySupported[cameraIdStr] = false;
+    ALOGW("%s: open_legacy set to false!", __FUNCTION__);
     }
 
     return false; // mInitFailed
